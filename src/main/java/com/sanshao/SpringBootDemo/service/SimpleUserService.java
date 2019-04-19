@@ -4,6 +4,8 @@ package com.sanshao.SpringBootDemo.service;
 import com.sanshao.SpringBootDemo.logs.LogAnnotation;
 import com.sanshao.SpringBootDemo.model.SimpleUser;
 import com.sanshao.SpringBootDemo.model.SimpleUserRepository;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,18 +13,20 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
-import javax.management.DescriptorKey;
 import java.util.List;
 
 @Component
+@Slf4j
 public class SimpleUserService {
+
+//    static Logger logger = LoggerFactory.getLogger(SimpleUser.class);
 
     @Autowired
     private SimpleUserRepository simpleUserRepository;
 
     @LogAnnotation("Add User")
     public SimpleUser addUser(SimpleUser simpleUser) {
-
+        log.info("Add a User");
         return simpleUserRepository.save(simpleUser);
 
     }

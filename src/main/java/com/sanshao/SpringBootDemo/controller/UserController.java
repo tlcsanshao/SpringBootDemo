@@ -1,6 +1,7 @@
 package com.sanshao.SpringBootDemo.controller;
 
 
+import com.sanshao.SpringBootDemo.exceptions.SimpleException;
 import com.sanshao.SpringBootDemo.model.SimpleUser;
 import com.sanshao.SpringBootDemo.service.SimpleUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,16 @@ public class UserController {
     @PutMapping("/simpleuser")
     public SimpleUser updateSimpleUser(@RequestParam(value = "name") String name, @RequestParam(value = "id") long id) {
         return simpleUserService.updateSimpleUser(name, id);
+    }
+
+
+    @GetMapping("/exception")
+    public void testException(@RequestParam(value = "code") int code) throws Exception {
+        if(code == -1) {
+            throw new SimpleException(-1, "0 为除数");
+        }else {
+            throw new Exception();
+        }
     }
 
 
