@@ -1,5 +1,6 @@
 package com.sanshao.SpringBootDemo;
 
+import com.sanshao.SpringBootDemo.mail.MailService;
 import com.sanshao.SpringBootDemo.model.SimpleUser;
 import com.sanshao.SpringBootDemo.model.SimpleUserRepository;
 import org.junit.Before;
@@ -15,6 +16,9 @@ public class SpringBootDemoApplicationTests {
 
 	@Autowired
 	SimpleUserRepository simpleUserRepository;
+
+	@Autowired
+	private com.sanshao.SpringBootDemo.mail.MailService MailService;
 
 
 	@Test
@@ -32,7 +36,8 @@ public class SpringBootDemoApplicationTests {
 
 
 	@Test
-	public void contextLoads() {
+	public void testSimpleMail() throws Exception {
+		MailService.sendSimpleMail("qianyinqy@163.com","test simple mail"," hello this is simple mail");
 	}
 
 }

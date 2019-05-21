@@ -49,6 +49,10 @@ public class SimpleUserService {
 
     }
 
+    public SimpleUser getSimpleUser(long id){
+        return simpleUserRepository.findById(id).get();
+    }
+
     @LogAnnotation("Update User")
     public SimpleUser updateSimpleUser(String name, long id) {
         int flag = simpleUserRepository.modifyNameById(name, id);
@@ -57,5 +61,12 @@ public class SimpleUserService {
         }
         return null;
     }
+
+    @LogAnnotation("Delete User")
+    public boolean deleteSimpleUser(long id){
+        simpleUserRepository.deleteById(id);
+        return true;
+    }
+
 
 }

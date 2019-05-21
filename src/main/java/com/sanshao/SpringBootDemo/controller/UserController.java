@@ -26,9 +26,19 @@ public class UserController {
         return simpleUserService.getSimpleUsers(name, page, size);
     }
 
+    @GetMapping("/simpleuser/{id}")
+    public SimpleUser getSimpleUsers(@PathVariable(value = "id") long id) {
+        return simpleUserService.getSimpleUser(id);
+    }
+
     @PutMapping("/simpleuser")
     public SimpleUser updateSimpleUser(@RequestParam(value = "name") String name, @RequestParam(value = "id") long id) {
         return simpleUserService.updateSimpleUser(name, id);
+    }
+
+    @DeleteMapping("/simpleuser/{id}")
+    public boolean deleteSimpleUser(@PathVariable("id") long id){
+        return simpleUserService.deleteSimpleUser(id);
     }
 
 
